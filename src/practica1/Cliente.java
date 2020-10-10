@@ -2,11 +2,12 @@ package myp.practica1;
 
 import java.util.*;
 
-public class Cliente {
+public class Cliente implementes Observador {
 
     private int saldo;
     private String nombre;
-    private List<Suscripcion> suscripciones = new ArrayList<Suscripcion>();
+    private List<Suscripcion> servicios = new ArrayList<Servicio>();
+    private List<String> recomendaciones = new ArrayList<String>();
 
     /**
      * Define el estado inicial del cliente.
@@ -15,7 +16,7 @@ public class Cliente {
      */
     public Cliente(int saldo, String nombre) {
         this.saldo = saldo;
-	      this.nombre = nombre;
+	this.nombre = nombre;
     }
 
     /**
@@ -47,10 +48,24 @@ public class Cliente {
     }
 
     /**
-     * Regresa una lista de las suscripciones del cliente
+     * Regresa una lista de los servicios del cliente
      */
-    public List<Suscripcion> getSuscripciones() {
-        return this.suscripciones;
+    public List<Suscripcion> getServicios() {
+        return servicios;
+    
+    }
+
+    public List<String> getRecomendaciones() {
+        return recomendaciones;
+    }
+
+    /**
+     * Actualiza sus recomendaciones del dia.
+     */
+    @Override public void update() {
+        recomendaciones.clear();
+        for(servicio : servicios)
+	    servicio.recomiendaA(this);
     }
     
 }
