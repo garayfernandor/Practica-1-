@@ -2,6 +2,10 @@ package myp.practica1;
 
 import java.util.*;
 
+/**
+ * Clase de un Cliente de un Servicio.
+ */
+
 public class Cliente implementes Observador {
 
     private int saldo;
